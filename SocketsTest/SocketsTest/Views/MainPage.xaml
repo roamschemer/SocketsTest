@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocketsTest.Views.MainPage"
+             Title="Socket通信">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="4*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TableView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+            <TableView.Root>
+                <TableRoot>
+                    <TableSection Title="設定">
+                        <SwitchCell Text="{Binding ServerSwitchInfo.Value}" On="{Binding ServerSwitch.Value}" IsEnabled="{Binding SettingIsEnabled.Value}"/>
+                        <EntryCell Label="サーバー側IPアドレス" Text ="{Binding IpAddress.Value}" Placeholder="(192.168.0.77)" Keyboard="Email" IsEnabled="{Binding IPAddressSettingIsEnabled.Value}"/>
+                        <EntryCell Label="ポート番号" Text ="{Binding Port.Value}" Placeholder="(9999)" Keyboard="Email" IsEnabled="{Binding SettingIsEnabled.Value}"/>
+                    </TableSection>
+                </TableRoot>
+            </TableView.Root>
+        </TableView>
+        <Button Grid.Row="1" Grid.Column="0" Text = "Open" Command="{Binding OpenCommand}" />
+        <Button Grid.Row="1" Grid.Column="1" Text = "Send" Command="{Binding SendCommand}" />
+        <Button Grid.Row="1" Grid.Column="2" Text = "Close" Command="{Binding CloseCommand}" />
+        <Entry  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text = "{Binding SendData.Value}" Placeholder="(送信データを入力してSendを押す)" />
+        <ListView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding ActionView}" />
+    </Grid>
+
+</ContentPage>
